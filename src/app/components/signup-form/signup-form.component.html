@@ -1,0 +1,78 @@
+<form class="signup-form" [formGroup]="form" (ngSubmit)="validate()">
+  <div class="full-name-container" formGroupName="fullName">
+    <mat-form-field class="width-50" appearance="fill">
+      <mat-label>First name</mat-label>
+      <input type="text" matInput formControlName="firstName" />
+      <mat-error *ngIf="firstName?.hasError('required')">
+        First name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="width-50" appearance="fill">
+      <mat-label>Last name</mat-label>
+      <input type="text" matInput formControlName="lastName" />
+      <mat-error *ngIf="lastName?.hasError('required')">
+        Last name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="email" />
+    <mat-error
+      *ngIf="email && email.hasError('email') && !email.hasError('required')"
+    >
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="email?.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="password" />
+    <mat-error
+      *ngIf="
+        password &&
+        password.hasError('minLength') &&
+        !password.hasError('required') &&
+        !password.hasError('lowerUpper')
+      "
+    >
+      Password must contain at least 8 characters
+    </mat-error>
+    <mat-error
+      *ngIf="
+        password &&
+        password.hasError('lowerUpper') &&
+        !password.hasError('required') &&
+        !password.hasError('minLength')
+      "
+    >
+      Password must include lower and uppercase letters
+    </mat-error>
+    <mat-error
+      *ngIf="
+        password &&
+        password?.hasError('includesNames') &&
+        !password.hasError('required') &&
+        !password.hasError('minLength') &&
+        !password.hasError('lowerUpper')
+      "
+    >
+      Password should <strong>not</strong> contain your first or last name
+    </mat-error>
+    <mat-error *ngIf="password?.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <p>
+    Password must contain at least 8 characters that include lower and uppercase
+    letters and should not contain you first or last name
+  </p>
+  <button class="signup-button" mat-flat-button color="primary" type="submit">
+    Sign Up
+  </button>
+</form>
+<p style="color: green" *ngIf="successfulSubmit">Sign Up form successfuly submitted!</p>

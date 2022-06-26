@@ -1,0 +1,81 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$md-fedexprimary: (
+    50 : #e9e3f1,
+    100 : #c9b9dc,
+    200 : #a58ac4,
+    300 : #815bac,
+    400 : #66379b,
+    500 : #4b1489,
+    600 : #441281,
+    700 : #3b0e76,
+    800 : #330b6c,
+    900 : #230659,
+    A100 : #ad8cff,
+    A200 : #8959ff,
+    A400 : #6526ff,
+    A700 : #520cff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-fedexaccent: (
+    50 : #feece0,
+    100 : #fed1b3,
+    200 : #fdb280,
+    300 : #fc934d,
+    400 : #fb7b26,
+    500 : #fa6400,
+    600 : #f95c00,
+    700 : #f95200,
+    800 : #f84800,
+    900 : #f63600,
+    A100 : #ffffff,
+    A200 : #ffedea,
+    A400 : #ffc2b7,
+    A700 : #ffad9d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-primary: mat.define-palette($md-fedexprimary);
+$my-accent: mat.define-palette($md-fedexaccent);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent
+ )
+));
+
+@include mat.all-component-themes($my-theme);

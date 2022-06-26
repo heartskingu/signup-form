@@ -1,0 +1,33 @@
+.signup-form {
+    mat-form-field {
+        margin-bottom: 8px;
+    }
+
+    .signup-button {
+        float: right;
+        margin-top: 36px;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}
+
+.full-name-container {
+    display: flex;
+    gap: 24px;
+}
+
+@media only screen and (max-width: 520px) {
+    .width-50 {
+        width: 100%;
+    }
+
+    .full-name-container {
+        display: block;
+    }
+}
